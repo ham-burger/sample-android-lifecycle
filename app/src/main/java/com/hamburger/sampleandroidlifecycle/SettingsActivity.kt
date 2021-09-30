@@ -6,8 +6,14 @@ import androidx.preference.PreferenceFragmentCompat
 
 class SettingsActivity : AppCompatActivity() {
 
+    private val sampleLifecycleObserver by lazy {
+        SampleLifecycleObserver("Sample Lifecycle Observer")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycle.addObserver(sampleLifecycleObserver)
+
         setContentView(R.layout.settings_activity)
         if (savedInstanceState == null) {
             supportFragmentManager
